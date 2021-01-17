@@ -16,6 +16,7 @@ const workerFile = path.join(__dirname, 'worker.js');
 	const MAX_WIDTH = Math.max(...libraries.map(o=>o.name.length));
 
 	for (const lib of libraries) {
+		console.log(`---- ${lib.name} ----`);
 		try {
 			await new Promise((resolve, reject) => {
 
@@ -28,8 +29,7 @@ const workerFile = path.join(__dirname, 'worker.js');
 				worker.send(task);
 				worker.on('message', (stat) => {
 					console.log(
-						'\n%s: %s ms/file ± %s',
-						task.name.padEnd(MAX_WIDTH),
+						'%s ms/file ± %s',
 						stat.mean.toPrecision(6),
 						stat.sd.toPrecision(6)
 					);
@@ -37,6 +37,7 @@ const workerFile = path.join(__dirname, 'worker.js');
 				worker.on('close', err => err ? reject(err) : resolve());
 
 			});
+			console.log('\n');
 		}
 		catch (err) {
 			console.error('%s failed (exit code %d)', lib.name, err)
