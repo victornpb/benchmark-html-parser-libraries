@@ -7,12 +7,14 @@ const MemorySampler = require('./memorySampler');
 
 const workerFile = path.join(__dirname, 'worker.js');
 
-(async () => {
+module.exports = async () => {
+
+	const results = [];
 	
 	// find input files
-	const inputFiles = await fg('inputs/*.html', {cwd: path.join(__dirname,'..'), onlyFiles:true, absolute:true});
+	const inputFiles = await fg('inputs/*.html', { cwd: path.join(__dirname, '..'), onlyFiles: true, absolute: true });
 
-	const entries = await fg('tests/*.js', {cwd: path.join(__dirname,'..'), onlyFiles:true, absolute:true});
+	const entries = await fg('tests/*.js', { cwd: path.join(__dirname, '..'), onlyFiles: true, absolute: true });
 	const tests = entries.map(filePath => ({
 		name: path.basename(filePath),
 		jsModule: filePath,
@@ -52,23 +54,27 @@ const workerFile = path.join(__dirname, 'worker.js');
 		);
 		console.log(
 			'[Memory] Min: %smb, Mean: %smb, Max: %smb, SDT: %smb, Baseline: %smb, Required: %smb, Final: %smb',
-			(task.result.ram.min/1E6).toPrecision(3),
-			(task.result.ram.mean/1E6).toPrecision(3),
-			(task.result.ram.max/1E6).toPrecision(3),
-			(task.result.ram.sd/1E6).toPrecision(3),
-			(task.result.ram.baseline.rss/1E6).toPrecision(3),
-			(task.result.ram.required.rss/1E6).toPrecision(3),
-			(task.result.ram.final.rss/1E6).toPrecision(3),
+			(task.result.ram.min / 1E6).toPrecision(3),
+			(task.result.ram.mean / 1E6).toPrecision(3),
+			(task.result.ram.max / 1E6).toPrecision(3),
+			(task.result.ram.sd / 1E6).toPrecision(3),
+			(task.result.ram.baseline.rss / 1E6).toPrecision(3),
+			(task.result.ram.required.rss / 1E6).toPrecision(3),
+			(task.result.ram.final.rss / 1E6).toPrecision(3),
 		);
 		console.log('');
 
 		// Graph memory usage
 		// ram.samples 
+
+		results.push(task);
 	}
 
 	console.log('END!');
 
-})();
+	return results;
+
+};
 
 
 function executeChildWorker(workerFile, task, onSpawn) {

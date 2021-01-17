@@ -5,8 +5,8 @@
   "author": "victornpb",
   "main": "./src/index.js",
   "scripts": {
-    "test": "node ./src/execute.js",
-    "start": "node ./src/execute.js"
+    "test": "node ./src/index.js",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,11 +19,14 @@
     "parser"
   ],
   "dependencies": {
+    "asciitable.js": "^1.0.3",
     "async": "^3.2.0",
     "fast-glob": "^3.2.4",
+    "html-dom-parser": "^1.0.0",
     "ipc-event-emitter": "^2.0.2",
     "progress": "^2.0.3",
-    "summary": "^2.1.0"
+    "summary": "^2.1.0",
+    "systeminformation": "^4.34.7"
   },
   "devDependencies": {
     "html-parser": "^0.11.0",
