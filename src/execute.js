@@ -8,26 +8,25 @@ const MemorySampler = require('./memorySampler');
 const workerFile = path.join(__dirname, 'worker.js');
 
 (async () => {
+	
+	// find input files
+	const inputFiles = await fg('inputs/*.html', {cwd: path.join(__dirname,'..'), onlyFiles:true});
 
-	const entries = await fg('libs/*.js', { dot: true });
-	const libraries = entries.map(filePath => ({
+	const entries = await fg('tests/*.js', {cwd: path.join(__dirname,'..'), onlyFiles:true});
+	const tests = entries.map(filePath => ({
 		name: path.basename(filePath),
 		jsModule: path.join(__dirname, filePath),
 	}));
 
-	// find input files
-	const inputFiles = await fg('files/*.html', { dot: true });
-
-	for (const lib of libraries) {
-		console.log(`${lib.name}`);
+	for (const test of tests) {
+		console.log(`${test.name}`);
 
 		let ram;
 		const task = {
-			name: lib.name,
-			jsModule: lib.jsModule,
+			name: test.name,
+			jsModule: test.jsModule,
 			inputFiles,
 			result: null,
-			ram: null,
 		};
 
 		const onSpawn = (childProcess) => {
@@ -39,12 +38,11 @@ const workerFile = path.join(__dirname, 'worker.js');
 			task.result = await executeChildWorker(workerFile, task, onSpawn);
 		}
 		catch (err) {
-			console.error('%s failed (exit code %d)', lib.name, err)
+			console.error('%s failed (exit code %d)', test.name, err)
 		}
 	
 		ram.stop();
-		// task.ram = ram.samples;
-
+		
 		
 		console.log(
 			'[Timming] Startup: %sms\tStats: %s ms/file ± %s',
@@ -63,6 +61,9 @@ const workerFile = path.join(__dirname, 'worker.js');
 			(task.result.ram.final.rss/1E6).toPrecision(3),
 		);
 		console.log('');
+
+		// Graph memory usage
+		// ram.samples 
 	}
 
 	console.log('END!');

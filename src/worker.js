@@ -18,16 +18,16 @@ async function start(task) {
 
 	const ram = {};
 
+	// load lib
 	ram['baseline'] = process.memoryUsage();
 	let tRequire = process.hrtime();
 	
-	// load lib
 	const parser = require(task.jsModule);
-	// end load lib
-
+	
 	tRequire = hrtime2ms(process.hrtime(tRequire));
 	ram['required'] = process.memoryUsage();
-
+	// end load lib
+	
 	const bar = new ProgressBar(':current / :total [:bar]', {
 		total: task.inputFiles.length,
 		complete: '#',
