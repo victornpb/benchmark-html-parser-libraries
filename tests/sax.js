@@ -1,10 +1,12 @@
 const sax = require("sax");
 
-module.exports = async function (htm) {
-	var parser = sax.parser(false);
+module.exports = function (html) {
+	return new Promise((resolve, reject) => {
+		const parser = sax.parser(false);
 
-	parser.onend = callback;
-	parser.onerror = callback;
-	parser.write(html);
-	parser.close();
+		parser.onend = resolve;
+		parser.onerror = reject;
+		parser.write(html);
+		parser.close();
+	});
 };

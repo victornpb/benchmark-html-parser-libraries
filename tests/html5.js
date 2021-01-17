@@ -1,6 +1,6 @@
 const Parser = require('html5').SAXParser;
 
-module.exports = async function (htm) {
+module.exports = async function (html) {
 	var parser = new Parser();
 	var noop = function() {};
 	parser.contentHandler = {
