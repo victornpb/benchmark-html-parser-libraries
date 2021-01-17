@@ -10,5 +10,5 @@ module.exports = async function (html) {
 		endElement: noop,
 		characters: noop
 	};
-	parser.parse(html);
+	return parser.parse(html);
 };

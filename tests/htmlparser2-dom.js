@@ -3,7 +3,7 @@ const htmlparser2 = require('htmlparser2'),
     Handler = htmlparser2.DomHandler;
 
 module.exports = async function (html) {
-  var handler = new Handler();
-	var parser = new Parser(handler);
-	parser.parseComplete(html);
+  const handler = new Handler();
+	const parser = new Parser(handler);
+	return parser.parseComplete(html);
 };

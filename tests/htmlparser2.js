@@ -7,7 +7,7 @@ module.exports = function (html) {
 			onend: () => { resolve() },
 			onerror: () => { reject() },
 		});
-		parser.end(html);
+		return parser.end(html);
 
 	});
 };

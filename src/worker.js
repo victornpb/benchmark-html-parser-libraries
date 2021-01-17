@@ -47,12 +47,15 @@ async function start(task) {
 		let t = process.hrtime();
 
 		// execute the actual thing
-		await parser(content, () => { });
+		let r = await parser(content, () => { });
 
 		// after
 		t = hrtime2ms(process.hrtime(t));
 		times.push(t);
 		ramRuns.push(process.memoryUsage().rss);
+
+		Object.assign({}, r); // Dummy work so the three is not GC before sampling memory
+		r = null; // release, (this does not guarantee GC)
 
 		bar.tick();
 	}
