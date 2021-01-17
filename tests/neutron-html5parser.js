@@ -1,6 +1,6 @@
 const HTMLtoDOM = require("neutron-html5parser")();
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
     var noop = function () {};
     HTMLtoDOM.Parser(html, {
         start: noop,
@@ -9,6 +9,4 @@ module.exports = function (html, callback) {
         comment: noop,
         doctype: noop
     });
-
-    callback(null);
 };

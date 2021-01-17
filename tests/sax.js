@@ -1,6 +1,6 @@
 const sax = require("sax");
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
 	var parser = sax.parser(false);
 
 	parser.onend = callback;

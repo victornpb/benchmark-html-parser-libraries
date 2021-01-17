@@ -1,8 +1,7 @@
 const htmlparser = require('htmlparser');
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
 	var handler = new htmlparser.DefaultHandler();
 	var parser = new htmlparser.Parser(handler);
 	parser.parseComplete(html);
-	callback(null);
 };

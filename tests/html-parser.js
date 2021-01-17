@@ -1,6 +1,6 @@
 const htmlParser = require("html-parser");
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
 	htmlParser.parse(html, {});
-	callback(null);
+
 };

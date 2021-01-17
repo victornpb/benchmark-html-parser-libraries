@@ -1,7 +1,6 @@
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
     const dom = JSDOM.fragment(html, {includeNodeLocations:true, url:'http://example.com'});
-    callback(null);
 }

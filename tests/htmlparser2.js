@@ -1,6 +1,6 @@
 const Parser = require("htmlparser2").Parser;
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
 	var parser = new Parser({
 		onend: callback,
 		onerror: callback

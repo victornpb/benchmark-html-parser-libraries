@@ -1,6 +1,5 @@
 const libxml = require("libxmljs2");
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
 	new libxml.parseHtmlString(html);
-	callback(null);
 };

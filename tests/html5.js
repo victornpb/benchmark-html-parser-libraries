@@ -1,6 +1,6 @@
 const Parser = require('html5').SAXParser;
 
-module.exports = function (html, callback) {
+module.exports = async function (htm) {
 	var parser = new Parser();
 	var noop = function() {};
 	parser.contentHandler = {
@@ -11,5 +11,4 @@ module.exports = function (html, callback) {
 		characters: noop
 	};
 	parser.parse(html);
-	callback();
 };
