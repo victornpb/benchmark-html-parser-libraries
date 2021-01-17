@@ -1,4 +1,4 @@
-var hubbub = require('hubbub');
+const hubbub = require('hubbub');
 
 module.exports = function(html, callback) {
 	var handler = new hubbub.DefaultHandler();

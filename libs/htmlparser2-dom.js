@@ -1,4 +1,4 @@
-var htmlparser2 = require('htmlparser2'),
+const htmlparser2 = require('htmlparser2'),
     Parser = htmlparser2.Parser,
     Handler = htmlparser2.DomHandler;
 

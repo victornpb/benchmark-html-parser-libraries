@@ -1,5 +1,5 @@
 
-var gumbo = require("gumbo-parser");
+const gumbo = require("gumbo-parser");
 
 module.exports = function (html, callback) {
   gumbo(html);

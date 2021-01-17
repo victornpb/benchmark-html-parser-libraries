@@ -1,4 +1,4 @@
-var Parser = require("high5");
+const Parser = require("htmlparser2").Parser;
 
 module.exports = function (html, callback) {
 	var parser = new Parser({

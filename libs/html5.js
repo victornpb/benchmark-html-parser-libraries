@@ -1,5 +1,4 @@
-
-var Parser = require('html5').SAXParser;
+const Parser = require('html5').SAXParser;
 
 module.exports = function (html, callback) {
 	var parser = new Parser();

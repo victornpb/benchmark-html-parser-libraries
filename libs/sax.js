@@ -1,4 +1,4 @@
-var sax = require("sax");
+const sax = require("sax");
 
 module.exports = function (html, callback) {
 	var parser = sax.parser(false);
