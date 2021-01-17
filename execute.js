@@ -53,14 +53,14 @@ const workerFile = path.join(__dirname, 'worker.js');
 			task.result.timming.startup.toPrecision(6),
 		);
 		console.log(
-			'[Memory] Min: %s mb, Mean: %s mb, Max: %s mb, SDT: %s mb, Baseline: %s mb, Required: %s mb, Final: %s mb',
+			'[Memory] Min: %smb, Mean: %smb, Max: %smb, SDT: %smb, Baseline: %smb, Required: %smb, Final: %smb',
 			(task.result.ram.min/1E6).toPrecision(3),
 			(task.result.ram.mean/1E6).toPrecision(3),
 			(task.result.ram.max/1E6).toPrecision(3),
 			(task.result.ram.sd/1E6).toPrecision(3),
-			(task.result.ram.baseline/1E6).toPrecision(3),
-			(task.result.ram.required/1E6).toPrecision(3),
-			(task.result.ram.final/1E6).toPrecision(3),
+			(task.result.ram.baseline.rss/1E6).toPrecision(3),
+			(task.result.ram.required.rss/1E6).toPrecision(3),
+			(task.result.ram.final.rss/1E6).toPrecision(3),
 		);
 		console.log('');
 	}
