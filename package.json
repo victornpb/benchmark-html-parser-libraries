@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/victornpb/htmlparser-benchmark.git"
+    "url": "git://github.com/victornpb/benchmark-html-parser-libraries.git"
   },
   "keywords": [
     "benchmark",
