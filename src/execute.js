@@ -10,12 +10,12 @@ const workerFile = path.join(__dirname, 'worker.js');
 (async () => {
 	
 	// find input files
-	const inputFiles = await fg('inputs/*.html', {cwd: path.join(__dirname,'..'), onlyFiles:true});
+	const inputFiles = await fg('inputs/*.html', {cwd: path.join(__dirname,'..'), onlyFiles:true, absolute:true});
 
-	const entries = await fg('tests/*.js', {cwd: path.join(__dirname,'..'), onlyFiles:true});
+	const entries = await fg('tests/*.js', {cwd: path.join(__dirname,'..'), onlyFiles:true, absolute:true});
 	const tests = entries.map(filePath => ({
 		name: path.basename(filePath),
-		jsModule: path.join(__dirname, filePath),
+		jsModule: filePath,
 	}));
 
 	for (const test of tests) {
