@@ -11,62 +11,74 @@ function crashed(error) {
 	process.exit(1);
 }
 
+function hrtime2ms([s, ns]) { return s * 1000 + ns / 1000000; }
+
 process.on('message', start);
 async function start(task) {
 
-	const memory = {
-		baseLine: 0,
-		afterImport: 0,
-		samples: [],
-		end: 0,
-	};
+	const ram = {};
 
-	memory.baseLine = process.memoryUsage();
-
+	ram['baseline'] = process.memoryUsage();
+	let tRequire = process.hrtime();
+	
 	// load lib
 	const parser = require(task.jsModule);
 	// end load lib
 
-	memory.afterImport = process.memoryUsage();
+	tRequire = hrtime2ms(process.hrtime(tRequire));
+	ram['required'] = process.memoryUsage();
 
-	// find input files
-	const inputFiles = await fg('files/*.html', { dot: true });
-
-	const bar = new ProgressBar('[:bar] :current / :total', {
-		total: inputFiles.length,
-		complete: '=',
-		incomplete: ' ',
-		width: 50
+	const bar = new ProgressBar(':current / :total [:bar]', {
+		total: task.inputFiles.length,
+		complete: '#',
+		incomplete: '_',
+		width: 50,
 	});
 
 	const times = [];
-	for (const input of inputFiles) {
+	const ramRuns = [];
+	for (const input of task.inputFiles) {
 
 		// read input
 		const content = await fs.promises.readFile(input, 'utf8');
 
 		// before
-		const tic = process.hrtime();
+		ramRuns.push(process.memoryUsage().rss);
+		let t = process.hrtime();
 
-		// parse
-		parser(content, () => { });
+		// execute the actual thing
+		await parser(content, () => { });
 
 		// after
-		const toc = process.hrtime(tic);
-		times.push(toc);
+		t = hrtime2ms(process.hrtime(t));
+		times.push(t);
+		ramRuns.push(process.memoryUsage().rss);
 
 		bar.tick();
 	}
 
+	ram['final'] = process.memoryUsage();
+
 	// done
-	const stat = summary(times.map(t => {
-		return t[0] * 1e3 + t[1] / 1e6;
-	}));
+	const statTiming = summary(times);
+	const statRam = summary(ramRuns);
 
 	// result
 	process.send({
-		mean: stat.mean(),
-		sd: stat.sd(),
+		timming: {
+			startup: tRequire,
+			min: statTiming.min(),
+			mean: statTiming.mean(),
+			max: statTiming.max(),
+			sd: statTiming.sd(),
+		},
+		ram: {
+			...ram,
+			min: statRam.min(),
+			mean: statRam.mean(),
+			max: statRam.max(),
+			sd: statRam.sd(),
+		},
 	});
 
 	process.exit(0);
