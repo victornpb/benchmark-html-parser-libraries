@@ -26,14 +26,15 @@
     "libxmljs2": "^0.26.6",
     "neutron-html5parser": "^0.2.0",
     "parse5": "^6.0.1",
+    "pidusage": "^2.0.21",
     "sax": "^1.2.4"
   },
   "devDependencies": {
     "async": "^3.2.0",
     "fast-glob": "^3.2.4",
     "ipc-event-emitter": "^2.0.2",
-    "summary": "^2.1.0",
-    "progress": "^2.0.3"
+    "progress": "^2.0.3",
+    "summary": "^2.1.0"
   },
   "license": "MIT"
 }
