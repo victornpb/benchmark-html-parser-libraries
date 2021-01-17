@@ -1,48 +1,49 @@
+const fs = require('fs');
+const path = require('path');
+const fork = require('child_process').fork;
+const fg = require('fast-glob');
 
-var fs = require('fs');
-var path = require('path');
-var async = require('async');
-var fork = require('child_process').fork;
+const workerFile = path.join(__dirname, 'worker.js');
 
-var wrappers = fs.readdirSync(path.join(__dirname, 'wrapper'))
-	.map(function (filename) {
-		return {
-			name: path.basename(filename, '.js'),
-			parser: path.join(__dirname, 'wrapper', filename)
-		};
-	});
+(async () => {
 
-var MAX_WIDTH = Math.max.apply(Math, wrappers.map(function (wrapper) {
-	return wrapper.name.length;
-}));
+	const entries = await fg('libs/*.js', { dot: true });
+	const libraries = entries.map(filePath => ({
+		name: path.basename(filePath),
+		jsModule: path.join(__dirname, filePath),
+	}));
 
-function equalWidth(name) {
-	var left = MAX_WIDTH - name.length;
-	var str = name;
-	for (var i = 0; i < left; i++) str += ' ';
-	return str;
-}
+	const MAX_WIDTH = Math.max(...libraries.map(o=>o.name.length));
 
-async.eachSeries(
-	wrappers,
-	function (item, done) {
-		var runner = fork(path.join(__dirname, '_run.js'));
-		runner.send(item);
-		runner.on('message', function (stat) {
-			console.log(
-				'\n%s: %s ms/file ± %s',
-				equalWidth(item.name),
-				stat.mean.toPrecision(6),
-				stat.sd.toPrecision(6)
-			);
-		});
+	for (const lib of libraries) {
+		try {
+			await new Promise((resolve, reject) => {
 
-		runner.on('close', function (n) {
-			if (n) {
-				console.log('%s failed (exit code %d)', item.name, n);
-			}
-			done();
-		});
-	},
-	function () {}
-);
+				const task = {
+					name: lib.name,
+					jsModule: lib.jsModule,
+				};
+
+				const worker = fork(workerFile);
+				worker.send(task);
+				worker.on('message', (stat) => {
+					console.log(
+						'\n%s: %s ms/file ± %s',
+						task.name.padEnd(MAX_WIDTH),
+						stat.mean.toPrecision(6),
+						stat.sd.toPrecision(6)
+					);
+				});
+				worker.on('close', err => err ? reject(err) : resolve());
+
+			});
+		}
+		catch (err) {
+			console.error('%s failed (exit code %d)', lib.name, err)
+		}
+	}
+
+	console.log('END!');
+
+})();
+
