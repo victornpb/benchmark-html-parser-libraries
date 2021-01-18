@@ -1,5 +1,5 @@
 # Benchmark HTML Parser Libraries
-  Benchmark speed and RAM memory usage with real-life data
+A Benchmark of javascript libraries for parsing HTML (CPU/RAM)
   
 
 # Results
