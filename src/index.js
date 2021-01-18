@@ -10,7 +10,7 @@ async function main() {
     // Collect device Info
     const device = await deviceInfo();
     const deviceSummary = S(`
-        Node: ${device.sw.node} V8: ${device.sw.v8} NPM: ${device.sw.npm}
+        Node: \`${device.sw.node}\` V8: \`${device.sw.v8}\` NPM: \`${device.sw.npm}\`
         OS: ${device.os}
         Device: ${device.name} | CPU ${device.cpu} | RAM ${device.ram} | GPU ${device.gpu}`);
     
@@ -27,7 +27,7 @@ async function main() {
     for (let i = 0; i < 2; i++) {
         results = await executor();
     }
-    console.log('Finihed!');
+    console.log('\n\nFinihed!\n\n');
 
     results = sortBy(results, 'name');
 
@@ -51,17 +51,32 @@ async function main() {
             `>${((r.result.ram.required.rss-r.result.ram.baseline.rss) / 1E6).toPrecision(3)}mb`,
             `>${(r.result.ram.final.rss / 1E6).toPrecision(3)}mb`,
         ])),
-    ]);
+    ], {
+        "row": {
+            "paddingLeft": "|",
+            "paddingRight": "|",
+            "colSeparator": "|",
+            "lineBreak": "\n"
+        },
+        "cell": {
+            "paddingLeft": " ",
+            "paddingRight": " "
+        },
+        "hr": {
+            "str": "-",
+            "colSeparator": "|"
+        }
+    });
     const md = S(`
         Date: \`${new Date().toISOString()}\`
         
         ${table}
 
         ----
-        
+
         #### Device summary
 
-        ${deviceSummary.replace(/^/gm,"> ")}
+        ${quote(deviceSummary)}
     `);
     
     console.log(md);
@@ -122,6 +137,10 @@ function sortBy(arr, fields) {
 
 function S(str) {
     return str.replace(/^\n/, '').replace(/^[ \t]+/gm, '');
+}
+
+function quote(str) {
+    return str.replace(/^/gm, "> ");
 }
 
 main();
