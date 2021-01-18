@@ -84,7 +84,9 @@ module.exports = async () => {
 function executeChildWorker(workerFile, task, onSpawn) {
 	return new Promise((resolve, reject) => {
 		let result = null;
-		const worker = fork(workerFile);
+		const worker = fork(workerFile, [], {
+			execArgv: [ '--expose-gc' ],
+		});
 
 		if (onSpawn) onSpawn(worker);
 		

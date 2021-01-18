@@ -18,6 +18,8 @@ async function start(task) {
 
 	const ram = {};
 
+	global.gc();
+
 	// load lib
 	ram['baseline'] = process.memoryUsage();
 	let tRequire = process.hrtime();
@@ -55,9 +57,11 @@ async function start(task) {
 		ramRuns.push(process.memoryUsage().rss);
 
 		Object.assign({}, r); // Dummy work so the three is not GC before sampling memory
-		r = null; // release, (this does not guarantee GC)
-
+		r = null; // release
+		
 		bar.tick();
+		
+		global.gc();
 	}
 
 	ram['final'] = process.memoryUsage();
