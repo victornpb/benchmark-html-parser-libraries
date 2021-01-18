@@ -57,7 +57,7 @@ var executor = require('./execute');
     console.log(md);
 
     // Write result
-    const fileName = new Date.toISOString().replace(/[:]/g, '-');
+    const fileName = `result_${new Date().toISOString().replace(/:/g, '-')}`;
     await fs.promises.writeFile(path.join(__dirname, '../results/', `${fileName}.md`), md, 'utf8'); // markdown
     await fs.promises.writeFile(path.join(__dirname, '../results/', `${fileName}.json`), JSON.stringify(results, null, '\t'), 'utf8'); // Raw JSON
     
