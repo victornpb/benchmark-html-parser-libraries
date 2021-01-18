@@ -49,20 +49,22 @@ module.exports = async () => {
 		
 		
 		console.log(
-			'[Timming] Stats: %s ms/file ± %s \t Startup: %sms',
-			task.result.timming.mean.toPrecision(6),
-			task.result.timming.sd.toPrecision(6),
-			task.result.timming.startup.toPrecision(6),
-		);
-		console.log(
-			'[Memory] Mean: %sMB ±%sMB\tMin: %sMB\tMax: %sMB\tBaseline: %sMB\tAfter Import: %sMB\tAfter Benchmark: %sMB',
-			(task.result.ram.mean / 1E6).toPrecision(3),
+			'[RAM] Mean: %sMB/file ± %sMB\tMin: %sMB\tMax: %sMB\tSetup: %sMB\tInitial: %sMB\tFinal: %sMB',
+			(task.result.ram.mean / 1E6).toPrecision(6),
 			(task.result.ram.sd / 1E6).toPrecision(3),
 			(task.result.ram.min / 1E6).toPrecision(3),
 			(task.result.ram.max / 1E6).toPrecision(3),
-			(task.result.ram.baseline.rss / 1E6).toPrecision(3),
 			(task.result.ram.required.rss / 1E6).toPrecision(3),
+			(task.result.ram.baseline.rss / 1E6).toPrecision(3),
 			(task.result.ram.final.rss / 1E6).toPrecision(3),
+		);
+		console.log(
+			'[CPU] Mean: %sms/file ± %sms\tMin: %sms\tMax: %sms\tStartup: %sms',
+			task.result.timming.mean.toPrecision(6),
+			task.result.timming.sd.toPrecision(3),
+			task.result.timming.min.toPrecision(3),
+			task.result.timming.max.toPrecision(3),
+			task.result.timming.startup.toPrecision(6),
 		);
 		console.log('');
 

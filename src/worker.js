@@ -34,11 +34,11 @@ async function start(task) {
 
 	const parser = typeof theModule === 'function' ? theModule : theModule.parse;
 	
-	const bar = new ProgressBar(':current / :total [:bar]', {
+	const bar = new ProgressBar('[:bar] :percent (:current/:total) | :rate HTML/s | ETA: :eta | ', {
 		total: task.inputFiles.length,
-		complete: '#',
-		incomplete: '_',
-		width: 50,
+		complete: '\u25A0',
+		incomplete: '-',
+		// width: 40,
 	});
 
 	const times = [];

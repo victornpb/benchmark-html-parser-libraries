@@ -22,7 +22,7 @@ async function main() {
     //       It should also make any effects of potential caching negligible
     
     // Run test
-    console.log('Running...');
+    console.log('\nRunning...\n');
     let results;
     for (let i = 0; i < 2; i++) {
         results = await executor();
@@ -39,7 +39,7 @@ async function main() {
 
     // Create Markdown
     const table = matrixToAsciiTable([
-        ['^Library', '^ms/file (Mean)', '^Module Startup', '^RAM usage/file (Mean)', '^Max', '^Baseline', '^Lib Overhead', '^Final'], //header
+        ['^Library', '^ms/file (Mean)', '^Module Startup', '^RAM MB/file (Mean)', '^Max', /*'^Baseline',*/ '^Lib Overhead', '^Delta'], //header
         null, //horizontal line
         ...results.map(r => ([
             `<${r.name}`,
@@ -47,9 +47,9 @@ async function main() {
             `>${r.result.timming.startup.toPrecision(6)}ms`,
             `>${(r.result.ram.mean / 1E6).toPrecision(3)}mb ±${(r.result.ram.sd / 1E6).toPrecision(3)}mb`,
             `>${(r.result.ram.max / 1E6).toPrecision(3)}mb`,
-            `>${(r.result.ram.baseline.rss / 1E6).toPrecision(3)}mb`,
+            // `>${(r.result.ram.baseline.rss / 1E6).toPrecision(3)}mb`,
             `>${((r.result.ram.required.rss-r.result.ram.baseline.rss) / 1E6).toPrecision(3)}mb`,
-            `>${(r.result.ram.final.rss / 1E6).toPrecision(3)}mb`,
+            `>${((r.result.ram.final.rss-r.result.ram.required.rss) / 1E6).toPrecision(3)}mb`,
         ])),
     ], {
         "row": {
@@ -71,6 +71,8 @@ async function main() {
         Date: \`${new Date().toISOString()}\`
         
         ${table}
+
+        \* Delta = The amount of RAM being used at the end of the benchmark after Garbage Colletion. This shows how good or bad the library is at releasing its resources.
 
         ----
 
