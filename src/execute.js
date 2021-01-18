@@ -14,6 +14,7 @@ module.exports = async () => {
 	// find input files
 	const inputFiles = await fg('inputs/*.html', { cwd: path.join(__dirname, '..'), onlyFiles: true, absolute: true });
 
+	// find tests
 	const entries = await fg('tests/*.js', { cwd: path.join(__dirname, '..'), onlyFiles: true, absolute: true });
 	const tests = entries.map(filePath => ({
 		name: path.basename(filePath),
@@ -21,7 +22,7 @@ module.exports = async () => {
 	}));
 
 	for (const test of tests) {
-		console.log(`${test.name}`);
+		console.log(`* ${test.name}`);
 
 		let ram;
 		const task = {
@@ -40,24 +41,25 @@ module.exports = async () => {
 			task.result = await executeChildWorker(workerFile, task, onSpawn);
 		}
 		catch (err) {
-			console.error('%s failed (exit code %d)', test.name, err)
+			console.error('%s failed (exit code %d)', test.name, err);
+			task.result = {};
 		}
 	
 		ram.stop();
 		
 		
 		console.log(
-			'[Timming] Startup: %sms\tStats: %s ms/file ± %s',
+			'[Timming] Stats: %s ms/file ± %s \t Startup: %sms',
 			task.result.timming.mean.toPrecision(6),
 			task.result.timming.sd.toPrecision(6),
 			task.result.timming.startup.toPrecision(6),
 		);
 		console.log(
-			'[Memory] Min: %smb, Mean: %smb, Max: %smb, SDT: %smb, Baseline: %smb, Required: %smb, Final: %smb',
-			(task.result.ram.min / 1E6).toPrecision(3),
+			'[Memory] Mean: %sMB ±%sMB\tMin: %sMB\tMax: %sMB\tBaseline: %sMB\tAfter Import: %sMB\tAfter Benchmark: %sMB',
 			(task.result.ram.mean / 1E6).toPrecision(3),
-			(task.result.ram.max / 1E6).toPrecision(3),
 			(task.result.ram.sd / 1E6).toPrecision(3),
+			(task.result.ram.min / 1E6).toPrecision(3),
+			(task.result.ram.max / 1E6).toPrecision(3),
 			(task.result.ram.baseline.rss / 1E6).toPrecision(3),
 			(task.result.ram.required.rss / 1E6).toPrecision(3),
 			(task.result.ram.final.rss / 1E6).toPrecision(3),
@@ -65,6 +67,7 @@ module.exports = async () => {
 		console.log('');
 
 		// Graph memory usage
+		// TODO:
 		// ram.samples 
 
 		results.push({
@@ -73,8 +76,8 @@ module.exports = async () => {
 		});
 	}
 
-	return results;
 
+	return results;
 };
 
 
