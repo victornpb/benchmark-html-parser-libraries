@@ -67,10 +67,11 @@ module.exports = async () => {
 		// Graph memory usage
 		// ram.samples 
 
-		results.push(task);
+		results.push({
+			name: task.name,
+			result: task.result,
+		});
 	}
-
-	console.log('END!');
 
 	return results;
 
