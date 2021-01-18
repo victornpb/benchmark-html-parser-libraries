@@ -1,7 +1,7 @@
 {
   "name": "benchmark-html-parser-libraries",
   "description": "Benchmark speed and RAM memory usage with real-life data",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "author": "victornpb",
   "main": "./src/index.js",
   "scripts": {
@@ -16,13 +16,13 @@
     "benchmark",
     "jsdom",
     "htmlparser2",
-    "parser"
+    "parser",
+    "dom"
   ],
   "dependencies": {
     "asciitable.js": "^1.0.3",
     "async": "^3.2.0",
     "fast-glob": "^3.2.4",
-    "html-dom-parser": "^1.0.0",
     "ipc-event-emitter": "^2.0.2",
     "progress": "^2.0.3",
     "summary": "^2.1.0",
@@ -34,6 +34,7 @@
     "html5parser": "^2.0.0",
     "htmlparser": "^1.7.7",
     "htmlparser2": "^6.0.0",
+    "html-dom-parser": "^1.0.0",
     "jsdom": "^16.4.0",
     "libxmljs": "^0.19.7",
     "libxmljs2": "^0.26.6",
