@@ -1,0 +1,641 @@
+{
+	"date": "2021-01-19T02:00:54.751Z",
+	"device": {
+		"sw": {
+			"node": "14.15.1",
+			"npm": "6.14.8",
+			"v8": "8.4.371.19-node.17"
+		},
+		"os": "Mac OS X macOS Catalina 10.15.7 darwin x64 19.6.0",
+		"name": "Apple Inc. MacBookPro15,1",
+		"cpu": "Intel® Core™ i7-8750H 2.20GHz 6C/12T",
+		"ram": "16 GB",
+		"gpu": "Intel Intel UHD Graphics 630  Built-In 1536 MB / AMD Radeon Pro 555X  PCIe 4096 MB"
+	},
+	"results": [
+		{
+			"name": "html-dom-parser.js",
+			"result": {
+				"timming": {
+					"startup": 7.609444,
+					"min": 3.731201,
+					"mean": 34.52544394961239,
+					"max": 123.981254,
+					"sd": 16.06012150239461
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27828224,
+						"heapTotal": 8978432,
+						"heapUsed": 3193688,
+						"external": 1264552,
+						"arrayBuffers": 19944
+					},
+					"required": {
+						"rss": 28086272,
+						"heapTotal": 8978432,
+						"heapUsed": 4133840,
+						"external": 1212103,
+						"arrayBuffers": 118192
+					},
+					"final": {
+						"rss": 51793920,
+						"heapTotal": 40042496,
+						"heapUsed": 4394088,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 28504064,
+					"mean": 48874011.78294572,
+					"max": 53735424,
+					"sd": 3526392.225705815
+				}
+			}
+		},
+		{
+			"name": "html-parser.js",
+			"result": {
+				"timming": {
+					"startup": 1.703857,
+					"min": 7.554907,
+					"mean": 29.29663295348838,
+					"max": 211.033066,
+					"sd": 20.58742247287532
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27168768,
+						"heapTotal": 8454144,
+						"heapUsed": 3191960,
+						"external": 1264544,
+						"arrayBuffers": 19936
+					},
+					"required": {
+						"rss": 27217920,
+						"heapTotal": 8454144,
+						"heapUsed": 3304544,
+						"external": 1128243,
+						"arrayBuffers": 34332
+					},
+					"final": {
+						"rss": 73256960,
+						"heapTotal": 38600704,
+						"heapUsed": 3683144,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 27779072,
+					"mean": 66696152.31007752,
+					"max": 75067392,
+					"sd": 10763382.561068859
+				}
+			}
+		},
+		{
+			"name": "html5.js",
+			"result": {
+				"timming": {
+					"startup": 20.186359,
+					"min": 3.614302,
+					"mean": 110.70108441472873,
+					"max": 1286.331027,
+					"sd": 139.8280374191614
+				},
+				"ram": {
+					"baseline": {
+						"rss": 28192768,
+						"heapTotal": 8978432,
+						"heapUsed": 3192832,
+						"external": 1264532,
+						"arrayBuffers": 19924
+					},
+					"required": {
+						"rss": 30670848,
+						"heapTotal": 9842688,
+						"heapUsed": 6064288,
+						"external": 1437665,
+						"arrayBuffers": 296573
+					},
+					"final": {
+						"rss": 80633856,
+						"heapTotal": 42962944,
+						"heapUsed": 7232752,
+						"external": 1215664,
+						"arrayBuffers": 17741
+					},
+					"min": 31887360,
+					"mean": 78180558.38759689,
+					"max": 82608128,
+					"sd": 5728082.489713766
+				}
+			}
+		},
+		{
+			"name": "html5parser.js",
+			"result": {
+				"timming": {
+					"startup": 0.470319,
+					"min": 0.451317,
+					"mean": 2.708321941860466,
+					"max": 29.234174,
+					"sd": 2.869272032736798
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27553792,
+						"heapTotal": 8978432,
+						"heapUsed": 3192696,
+						"external": 1264544,
+						"arrayBuffers": 19936
+					},
+					"required": {
+						"rss": 27598848,
+						"heapTotal": 8978432,
+						"heapUsed": 3233224,
+						"external": 1113859,
+						"arrayBuffers": 19948
+					},
+					"final": {
+						"rss": 56836096,
+						"heapTotal": 39649280,
+						"heapUsed": 4145736,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 27983872,
+					"mean": 54383679.50387596,
+					"max": 62435328,
+					"sd": 5466022.029240581
+				}
+			}
+		},
+		{
+			"name": "htmlparser.js",
+			"result": {
+				"timming": {
+					"startup": 1.467419,
+					"min": 2.523432,
+					"mean": 27.79142536434111,
+					"max": 1992.2647040000002,
+					"sd": 150.92511013776053
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27959296,
+						"heapTotal": 8978432,
+						"heapUsed": 3192808,
+						"external": 1264542,
+						"arrayBuffers": 19934
+					},
+					"required": {
+						"rss": 28045312,
+						"heapTotal": 8978432,
+						"heapUsed": 3327960,
+						"external": 1144401,
+						"arrayBuffers": 50490
+					},
+					"final": {
+						"rss": 60256256,
+						"heapTotal": 38862848,
+						"heapUsed": 3575288,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 28430336,
+					"mean": 55234512.37209303,
+					"max": 61317120,
+					"sd": 6995767.178310821
+				}
+			}
+		},
+		{
+			"name": "htmlparser2-dom.js",
+			"result": {
+				"timming": {
+					"startup": 20.18517,
+					"min": 5.979563,
+					"mean": 33.047551344961256,
+					"max": 130.436658,
+					"sd": 15.145335500128393
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27574272,
+						"heapTotal": 8978432,
+						"heapUsed": 3192560,
+						"external": 1264552,
+						"arrayBuffers": 19944
+					},
+					"required": {
+						"rss": 30339072,
+						"heapTotal": 9244672,
+						"heapUsed": 5675608,
+						"external": 1273972,
+						"arrayBuffers": 180061
+					},
+					"final": {
+						"rss": 54661120,
+						"heapTotal": 39780352,
+						"heapUsed": 4407328,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 30744576,
+					"mean": 51515661.89147285,
+					"max": 54951936,
+					"sd": 3781311.20611046
+				}
+			}
+		},
+		{
+			"name": "htmlparser2.js",
+			"result": {
+				"timming": {
+					"startup": 20.4077,
+					"min": 2.28,
+					"mean": 28.74573016666667,
+					"max": 65.620178,
+					"sd": 12.72950276094425
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27631616,
+						"heapTotal": 8978432,
+						"heapUsed": 3192776,
+						"external": 1264544,
+						"arrayBuffers": 19936
+					},
+					"required": {
+						"rss": 31039488,
+						"heapTotal": 9244672,
+						"heapUsed": 5675520,
+						"external": 1273964,
+						"arrayBuffers": 180053
+					},
+					"final": {
+						"rss": 49418240,
+						"heapTotal": 39780352,
+						"heapUsed": 4368928,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 31453184,
+					"mean": 47531976.4341085,
+					"max": 49979392,
+					"sd": 2839984.93368132
+				}
+			}
+		},
+		{
+			"name": "jsdom-fragment.js",
+			"result": {
+				"timming": {
+					"startup": 508.320606,
+					"min": 25.11496,
+					"mean": 117.07255595348835,
+					"max": 521.539327,
+					"sd": 53.61354090643047
+				},
+				"ram": {
+					"baseline": {
+						"rss": 28139520,
+						"heapTotal": 8978432,
+						"heapUsed": 3191744,
+						"external": 1264550,
+						"arrayBuffers": 19942
+					},
+					"required": {
+						"rss": 67964928,
+						"heapTotal": 54071296,
+						"heapUsed": 21285696,
+						"external": 1658745,
+						"arrayBuffers": 173206
+					},
+					"final": {
+						"rss": 110268416,
+						"heapTotal": 59838464,
+						"heapUsed": 24957536,
+						"external": 1777843,
+						"arrayBuffers": 92079
+					},
+					"min": 68317184,
+					"mean": 109922629.45736447,
+					"max": 134578176,
+					"sd": 6543714.233994945
+				}
+			}
+		},
+		{
+			"name": "jsdom-node-locations.js",
+			"result": {
+				"timming": {
+					"startup": 509.632828,
+					"min": 32.251894,
+					"mean": 121.06323945348835,
+					"max": 582.754575,
+					"sd": 56.45079111103356
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27635712,
+						"heapTotal": 8978432,
+						"heapUsed": 3192832,
+						"external": 1264562,
+						"arrayBuffers": 19954
+					},
+					"required": {
+						"rss": 66912256,
+						"heapTotal": 54333440,
+						"heapUsed": 21252848,
+						"external": 1658757,
+						"arrayBuffers": 173218
+					},
+					"final": {
+						"rss": 110223360,
+						"heapTotal": 61411328,
+						"heapUsed": 24993592,
+						"external": 1777843,
+						"arrayBuffers": 92079
+					},
+					"min": 67264512,
+					"mean": 108517026.72868223,
+					"max": 132534272,
+					"sd": 6051320.66388236
+				}
+			}
+		},
+		{
+			"name": "jsdom.js",
+			"result": {
+				"timming": {
+					"startup": 471.16113,
+					"min": 40.491195,
+					"mean": 143.50924596899227,
+					"max": 504.976845,
+					"sd": 58.78896735941158
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27791360,
+						"heapTotal": 8978432,
+						"heapUsed": 3192672,
+						"external": 1264532,
+						"arrayBuffers": 19924
+					},
+					"required": {
+						"rss": 66158592,
+						"heapTotal": 53542912,
+						"heapUsed": 21676008,
+						"external": 1636528,
+						"arrayBuffers": 150989
+					},
+					"final": {
+						"rss": 114429952,
+						"heapTotal": 63508480,
+						"heapUsed": 26117952,
+						"external": 1778141,
+						"arrayBuffers": 92079
+					},
+					"min": 66506752,
+					"mean": 116992007.93798451,
+					"max": 151056384,
+					"sd": 7108735.327121346
+				}
+			}
+		},
+		{
+			"name": "libxmljs.js",
+			"result": {
+				"timming": {
+					"startup": 5.783202,
+					"min": 0.801459,
+					"mean": 4.438064744186044,
+					"max": 41.45727,
+					"sd": 3.130599949537073
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27824128,
+						"heapTotal": 8978432,
+						"heapUsed": 3192592,
+						"external": 1264538,
+						"arrayBuffers": 19930
+					},
+					"required": {
+						"rss": 28418048,
+						"heapTotal": 8978432,
+						"heapUsed": 3736224,
+						"external": 1136223,
+						"arrayBuffers": 42312
+					},
+					"final": {
+						"rss": 44879872,
+						"heapTotal": 38600704,
+						"heapUsed": 3756344,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 28868608,
+					"mean": 43037307.03875967,
+					"max": 47570944,
+					"sd": 3004833.715994295
+				}
+			}
+		},
+		{
+			"name": "neutron-html5parser.js",
+			"result": {
+				"timming": {
+					"startup": 1.229972,
+					"min": 0.95705,
+					"mean": 3.9935141395348848,
+					"max": 17.622268,
+					"sd": 2.227638270808692
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27394048,
+						"heapTotal": 8978432,
+						"heapUsed": 3193936,
+						"external": 1264560,
+						"arrayBuffers": 19952
+					},
+					"required": {
+						"rss": 27521024,
+						"heapTotal": 8978432,
+						"heapUsed": 3309640,
+						"external": 1122438,
+						"arrayBuffers": 28527
+					},
+					"final": {
+						"rss": 52752384,
+						"heapTotal": 38600704,
+						"heapUsed": 3521352,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 27910144,
+					"mean": 47812028.52713179,
+					"max": 53448704,
+					"sd": 6479435.515363426
+				}
+			}
+		},
+		{
+			"name": "parse5-fragment.js",
+			"result": {
+				"timming": {
+					"startup": 15.680848,
+					"min": 8.093606,
+					"mean": 37.49430781782941,
+					"max": 100.048823,
+					"sd": 13.770739143678007
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27934720,
+						"heapTotal": 8716288,
+						"heapUsed": 3191584,
+						"external": 1264552,
+						"arrayBuffers": 19944
+					},
+					"required": {
+						"rss": 30363648,
+						"heapTotal": 8876032,
+						"heapUsed": 4914848,
+						"external": 1478266,
+						"arrayBuffers": 384355
+					},
+					"final": {
+						"rss": 62349312,
+						"heapTotal": 41222144,
+						"heapUsed": 5598600,
+						"external": 1350887,
+						"arrayBuffers": 56751
+					},
+					"min": 31121408,
+					"mean": 61639354.54263568,
+					"max": 74022912,
+					"sd": 6774349.184238671
+				}
+			}
+		},
+		{
+			"name": "parse5.js",
+			"result": {
+				"timming": {
+					"startup": 15.930219,
+					"min": 7.752259,
+					"mean": 38.5529097131783,
+					"max": 100.011349,
+					"sd": 13.819631625416081
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27848704,
+						"heapTotal": 8978432,
+						"heapUsed": 3192584,
+						"external": 1264534,
+						"arrayBuffers": 19926
+					},
+					"required": {
+						"rss": 30375936,
+						"heapTotal": 9138176,
+						"heapUsed": 4915816,
+						"external": 1478248,
+						"arrayBuffers": 384337
+					},
+					"final": {
+						"rss": 64008192,
+						"heapTotal": 41222144,
+						"heapUsed": 5622096,
+						"external": 1350887,
+						"arrayBuffers": 56751
+					},
+					"min": 31174656,
+					"mean": 61195589.45736436,
+					"max": 73916416,
+					"sd": 7150899.187973883
+				}
+			}
+		},
+		{
+			"name": "sax-wasm.js",
+			"result": {
+				"timming": {
+					"startup": 5.452972,
+					"min": 1.493962,
+					"mean": 11.336474151162793,
+					"max": 50.600246,
+					"sd": 6.29945213940538
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27791360,
+						"heapTotal": 8978432,
+						"heapUsed": 3192608,
+						"external": 1264538,
+						"arrayBuffers": 19930
+					},
+					"required": {
+						"rss": 30015488,
+						"heapTotal": 8978432,
+						"heapUsed": 3363880,
+						"external": 4107258,
+						"arrayBuffers": 64227
+					},
+					"final": {
+						"rss": 132571136,
+						"heapTotal": 38600704,
+						"heapUsed": 3423584,
+						"external": 186242151,
+						"arrayBuffers": 50513
+					},
+					"min": 37695488,
+					"mean": 88050402.23255822,
+					"max": 132571136,
+					"sd": 27078640.093944125
+				}
+			}
+		},
+		{
+			"name": "sax.js",
+			"result": {
+				"timming": {
+					"startup": 2.481112,
+					"min": 1.921035,
+					"mean": 13.400137581395345,
+					"max": 99.055635,
+					"sd": 14.987725598857418
+				},
+				"ram": {
+					"baseline": {
+						"rss": 27873280,
+						"heapTotal": 8978432,
+						"heapUsed": 3192624,
+						"external": 1264528,
+						"arrayBuffers": 19920
+					},
+					"required": {
+						"rss": 28065792,
+						"heapTotal": 8978432,
+						"heapUsed": 3413536,
+						"external": 1157384,
+						"arrayBuffers": 63473
+					},
+					"final": {
+						"rss": 66478080,
+						"heapTotal": 38862848,
+						"heapUsed": 3682392,
+						"external": 1311877,
+						"arrayBuffers": 17741
+					},
+					"min": 28459008,
+					"mean": 62501935.627906986,
+					"max": 67170304,
+					"sd": 5472953.60927668
+				}
+			}
+		}
+	]
+}
