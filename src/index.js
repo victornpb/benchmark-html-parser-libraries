@@ -74,9 +74,17 @@ async function main() {
         
         ${table}
 
-        \* Delta = The amount of RAM being used at the end of the benchmark after Garbage Colletion.  
+        #### Notes:
+        \* Max = The maximum amount of memory seen during all the tests.  
+                (You should see higher values in the real world when parsing multiple files in sequence,  
+                 normally garbage collection isn't guaranteed to happen after each parse, like here.
+                 This is the amount of ram you will typically need for parsing a single file)
+                     
+        \* Delta = The amount of RAM being used at the end of the benchmark after a forced Garbage Colletion.  
                   This shows how good or bad the library is at releasing its resources.
 
+        \* Lib Overhead = Memory usage just after importing the library and running the setup()  
+                         minus the baseline memory usage before importing the library.
         ----
 
         #### Device summary
