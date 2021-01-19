@@ -26,7 +26,8 @@
     "ipc-event-emitter": "^2.0.2",
     "progress": "^2.0.3",
     "summary": "^2.1.0",
-    "systeminformation": "^4.34.7"
+    "systeminformation": "^4.34.7",
+    "tiny-dedent": "^1.0.0"
   },
   "devDependencies": {
     "html-dom-parser": "^1.0.0",

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const si = require('systeminformation');
 const matrixToAsciiTable = require('asciitable.js');
+const S = require('tiny-dedent');
 
 var executor = require('./execute');
 
@@ -67,12 +68,14 @@ async function main() {
             "colSeparator": "|"
         }
     });
+
     const md = S(`
         Date: \`${new Date().toISOString()}\`
         
         ${table}
 
-        \* Delta = The amount of RAM being used at the end of the benchmark after Garbage Colletion. This shows how good or bad the library is at releasing its resources.
+        \* Delta = The amount of RAM being used at the end of the benchmark after Garbage Colletion.  
+                  This shows how good or bad the library is at releasing its resources.
 
         ----
 
@@ -135,10 +138,6 @@ function sortBy(arr, fields) {
         .reduce((p, n) => (p ? p : n), 0);
     }
     return arr.slice().sort(compareFn);
-}
-
-function S(str) {
-    return str.replace(/^\n/, '').replace(/^[ \t]+/gm, '');
 }
 
 function quote(str) {
